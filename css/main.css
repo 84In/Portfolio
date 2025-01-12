@@ -12,6 +12,7 @@ html {
 
 body {
     font-family: "Roboto", sans-serif;
+    font-size: 16px;
 }
 
 img {
@@ -233,6 +234,7 @@ header {
     max-width: 300px;
     margin: 0 auto;
     text-align: center;
+    font-size: 18px;
     color: var(--gray-color);
 }
 
@@ -245,6 +247,7 @@ header {
 .banner__heading p {
     font-weight: 300;
     line-height: 2em;
+    font-size: 18px;
     margin-bottom: 1.5em;
 }
 
@@ -299,6 +302,7 @@ header {
 
 #things h2 {
     text-align: center;
+    font-size: 2.5rem;
     color: var(--gray-color);
     margin-bottom: 3em;
 }
@@ -387,6 +391,7 @@ header {
 
 #works h2 {
     text-align: center;
+    font-size: 2.5rem;
     color: var(--gray);
 }
 
