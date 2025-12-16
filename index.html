@@ -14,13 +14,13 @@
         body { margin: 0; overflow: hidden; background-color: #000000; font-family: 'Segoe UI', sans-serif; }
         #canvas-container { width: 100%; height: 100vh; display: block; }
         
-        /* UI Center Truvantis */
+        /* UI Center Vandiep */
         #ui-layer {
             position: absolute; bottom: 30px; width: 100%;
             text-align: center; pointer-events: none; z-index: 100;
         }
         
-        /* Guide text Truvantis */
+        /* Guide text Vandiep */
         .guide { 
             color: rgba(255, 255, 255, 0.6); 
             font-size: 13px; 
@@ -39,7 +39,7 @@
         }
         @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
 
-        /* Camera Preview Truvantis */
+        /* Camera Preview Vandiep */
         #camera-preview {
             position: absolute; top: 15px; right: 15px;
             width: 120px; height: 90px;
@@ -47,7 +47,7 @@
             transform: scaleX(-1); opacity: 0.6; border-radius: 8px;
         }
         
-        /* Truvantis */
+        /* Vandiep */
         #copyright {
             position: absolute;
             bottom: 10px;
@@ -66,18 +66,17 @@
 <body>
     <div id="error-log"></div>
     
-    <!-- UI Truvantis -->
+    <!-- UI Vandiep -->
     <div id="ui-layer">
-        <!-- Truvantis -->
+        <!-- Vandiep -->
         <div class="guide">
             🖐 <b>Open:</b> Explode &nbsp;|&nbsp; 🫶 <b>Heart:</b> Love &nbsp;|&nbsp; ✊ <b>Fist:</b> Tree
         </div>
-<<<<<<< HEAD
         <button id="btnStart" onclick="startSystem()">START MAGIC</button>
     </div>
 
-    <!-- Truvantis -->
-    <div id="copyright">© by Truvantis</div>
+    <!-- Vandiep -->
+    <div id="copyright">© by vandiep</div>
 
     <div id="canvas-container"></div>
     <video class="input_video" style="display:none"></video>
@@ -85,11 +84,13 @@
 
     <script>
         // ==========================================
-        // 1. RESOURCES CONFIG Truvantis
+        // 1. RESOURCES CONFIG Vandiep
         // ==========================================
-        const MUSIC_URL = "./audio.mp3";
-        let bgMusic = new Audio(MUSIC_URL);
-        bgMusic.loop = true; bgMusic.volume = 1.0;
+        // const MUSIC_URL = "./audio.mp3";
+        // let bgMusic = new Audio(MUSIC_URL);
+        // bgMusic.loop = true; bgMusic.volume = 1.0;
+
+
 
         const loader = new THREE.TextureLoader();
         const photoFiles = ['./image1.jpeg', './image2.jpeg', './image3.jpeg', './image4.jpeg', './image5.jpeg'];
@@ -132,7 +133,7 @@
         };
 
         // ==========================================
-        // 2. SYSTEM CONFIG Truvantis
+        // 2. SYSTEM CONFIG Vandiep
         // ==========================================
         const CONFIG = {
             goldCount: 2000,
@@ -154,7 +155,7 @@
         let handX = 0.5;
 
         // ==========================================
-        // 3. THREE.JS SYSTEM Truvantis
+        // 3. THREE.JS SYSTEM Vandiep
         // ==========================================
         function init3D() {
             const container = document.getElementById('canvas-container');
@@ -187,7 +188,7 @@
             const phases = []; 
             
             for(let i=0; i<count; i++) {
-                // --- TREE Truvantis ---
+                // --- TREE Vandiep ---
                 const h = Math.random() * CONFIG.treeHeight; 
                 const y = h - CONFIG.treeHeight / 2;
                 let radiusRatio = (type === 'gold') ? Math.sqrt(Math.random()) : 0.9 + Math.random()*0.1;
@@ -196,7 +197,7 @@
                 const theta = Math.random() * Math.PI * 2;
                 pTreeTargets.push(r * Math.cos(theta), y, r * Math.sin(theta));
 
-                // --- EXPLODE Truvantis ---
+                // --- EXPLODE Vandiep ---
                 const u = Math.random();
                 const v = Math.random();
                 const phi = Math.acos(2 * v - 1);
@@ -205,12 +206,12 @@
                 const rad = CONFIG.explodeRadius * Math.cbrt(Math.random()) * radMult;
                 pExplodeTargets.push(rad * Math.sin(phi) * Math.cos(lam), rad * Math.sin(phi) * Math.sin(lam), rad * Math.cos(phi));
 
-                // --- SOFT HEART Truvantis ---
+                // --- SOFT HEART Vandiep ---
                 const tHeart = Math.random() * Math.PI * 2;
                 let hx = 16 * Math.pow(Math.sin(tHeart), 3);
                 let hy = 13 * Math.cos(tHeart) - 5 * Math.cos(2*tHeart) - 2 * Math.cos(3*tHeart) - Math.cos(4*tHeart);
                 
-                const rFill = Math.pow(Math.random(), 0.3); // Soft fill Truvantis
+                const rFill = Math.pow(Math.random(), 0.3); // Soft fill Vandiep
                 hx *= rFill; hy *= rFill;
                 let hz = (Math.random() - 0.5) * 8 * rFill; 
                 
@@ -222,7 +223,7 @@
                 const scaleH = 2.2;
                 pHeartTargets.push(hx * scaleH, hy * scaleH + 5, hz); 
 
-                // --- INIT Truvantis ---
+                // --- INIT Vandiep ---
                 pPositions.push(pTreeTargets[i*3], pTreeTargets[i*3+1], pTreeTargets[i*3+2]);
                 sizes.push(size);
                 phases.push(Math.random() * Math.PI * 2);
@@ -232,7 +233,7 @@
             geo.setAttribute('position', new THREE.Float32BufferAttribute(pPositions, 3));
             geo.setAttribute('size', new THREE.Float32BufferAttribute(sizes, 1));
             
-            // Init colors Truvantis
+            // Init colors Vandiep
             const colors = new Float32Array(count * 3);
             const baseColor = new THREE.Color();
             if(type === 'gold') baseColor.setHex(0xFFD700);
@@ -284,7 +285,7 @@
         }
 
         function createDecorations() {
-            // MERRY CHRISTMAS Truvantis
+            // MERRY CHRISTMAS Vandiep
             const canvas = document.createElement('canvas');
             canvas.width = 1024; canvas.height = 256;
             const ctx = canvas.getContext('2d');
@@ -298,7 +299,7 @@
             titleMesh.position.set(0, 50, 0);
             scene.add(titleMesh);
 
-            // STAR Truvantis
+            // STAR Vandiep
             const starCanvas = document.createElement('canvas');
             starCanvas.width = 128; starCanvas.height = 128;
             const sCtx = starCanvas.getContext('2d');
@@ -316,7 +317,7 @@
             starMesh.position.set(0, CONFIG.treeHeight/2 + 2, 0);
             scene.add(starMesh);
 
-            // I LOVE YOU TEXT Truvantis
+            // I LOVE YOU TEXT Vandiep
             const loveCanvas = document.createElement('canvas');
             loveCanvas.width = 1024; loveCanvas.height = 256;
             const lCtx = loveCanvas.getContext('2d');
@@ -343,13 +344,13 @@
             const targetKey = (targetState === 'TREE') ? 'tree' : (targetState === 'HEART' ? 'heart' : 'explode');
             const targets = group.geometry.userData[(targetState === 'PHOTO') ? 'explode' : targetKey];
 
-            // 1. Truvantis
+            // 1. Vandiep
             for(let i=0; i<positions.length; i++) {
                 positions[i] += (targets[i] - positions[i]) * speed;
             }
             group.geometry.attributes.position.needsUpdate = true;
             
-            // 2. COLOR & SIZE Truvantis
+            // 2. COLOR & SIZE Vandiep
             const count = positions.length / 3;
             
             if (targetState === 'TREE') {
@@ -377,7 +378,7 @@
                 const beatScale = 1 + Math.abs(Math.sin(time * 3)) * 0.15;
                 group.scale.set(beatScale, beatScale, beatScale);
 
-                // Truvantis
+                // Vandiep
                 for(let i=0; i<count; i++) {
                     colors[i*3] = baseColor.r; colors[i*3+1] = baseColor.g; colors[i*3+2] = baseColor.b;
                     if (i % 3 === 0) sizes[i] = baseSize;
@@ -474,8 +475,14 @@
             renderer.render(scene, camera);
         }
 
+        let bgMusic;
+
         function startSystem() {
             document.getElementById('btnStart').style.display = 'none';
+
+            bgMusic = new Audio("./audio.mp3");
+            bgMusic.loop = true;
+            bgMusic.volume = 1.0;
             bgMusic.play().catch(e => console.log(e));
             init3D();
 
@@ -531,193 +538,3 @@
     </script>
 </body>
 </html>
-=======
-        <!-- heading -->
-        <div class="banner__heading">
-          <h1>Hi, I'm Tín</h1>
-          <p>
-            I am a backend web application developer who is passionate about
-            learning and continuously enhancing my professional knowledge. I
-            also focus on practicing soft skills to achieve my dream salary and
-            work in an environment that suits me well.
-          </p>
-          <a href="#">
-            <button class="banner_btn">View more</button>
-          </a>
-          <div class="banner__socials">
-            <a href="https://www.facebook.com/n.trungtin2304/"
-              ><i class="fa-brands fa-square-facebook"></i
-            ></a>
-            <a href="https://www.instagram.com/n.trungtin2304/"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="https://github.com/84In"
-              ><i class="fa-brands fa-square-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/t%C3%ADn-nguy%E1%BB%85n-trung-90438032b/"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- things -->
-    <section id="things">
-      <div class="container">
-        <!-- dec  -->
-        <div class="things__dec">
-          <img src="./img/things-dec-l.png" alt="illustration of leaf" />
-        </div>
-        <!-- dec  -->
-        <div class="things__dec">
-          <img src="./img/things-dec-r.png" alt="illustration of leaf" />
-        </div>
-        <!-- heading  -->
-        <h2>About Me</h2>
-        <!-- item1  -->
-        <div class="things__item">
-          <!-- img  -->
-          <img src="./img/things-item-1.png" alt="illustration of women" />
-          <!-- text  -->
-          <div class="things__item--heading">
-            <h3>Knowledge</h3>
-            <p>
-              I have effectively applied the knowledge gained from school as
-              well as from personal projects throughout my learning journey. I
-              am proficient in programming languages such as Node.js, Java and python. 
-              Additionally, I have experience working with databases like MongoDB and MySQL. Moreover, I possess a solid
-              understanding of Redis caching systems.
-            </p>
-          </div>
-        </div>
-        <!-- item2  -->
-        <div class="things__item">
-          <!-- img  -->
-          <img src="./img/things-item-2.png" alt="illustration of women" />
-          <!-- text  -->
-          <div class="things__item--heading">
-            <h3>Skills and Abilities</h3>
-            <p>
-              I have a strong passion for exploring new things, which motivates
-              me to continuously update my knowledge and refine my existing
-              skills. My teamwork abilities have been demonstrated through
-              various group projects, and I have developed a solid understanding
-              of work management. Additionally, the social activities I engaged
-              in during my time at school have helped me cultivate high
-              adaptability and resilience.
-            </p>
-          </div>
-        </div>
-        <!-- item3  -->
-        <div class="things__item">
-          <!-- img  -->
-          <img src="./img/things-item-3.png" alt="illustration of computer" />
-          <!-- text  -->
-          <div class="things__item--heading">
-            <h3>Experience</h3>
-            <p>
-              I have gained valuable experience in developing various systems
-              using different technologies. I have built an e-commerce system
-              based on the MVC pattern using Java, JSTL, JSP, JavaServlet and Spring Boot Framework, 
-              connecting with a MySQL database to manage products,
-              customers, and transactions. Additionally, I developed a Node.js, ReactJS and Nextjs 
-              web application to manage and showcase rental
-              listings, utilizing a RESTful API for communication between the
-              frontend and backend. I also created an e-commerce website using
-              Spring Boot and ReactJS, Nextjs, following a RESTful API architecture for
-              seamless data exchange. Furthermore, I gained experience in
-              designing and implementing a microservices-based e-commerce system
-              with Event Sourcing, enabling efficient event-driven architecture
-              and ensuring consistency in a distributed environment.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- works  -->
-    <section id="works">
-      <div class="container">
-        <!-- dec -->
-        <div class="works__dec">
-          <img src="./img/work-dec.png" alt="illustration of leaf" />
-        </div>
-        <div class="works__dec">
-          <img src="./img/work-dec.png" alt="illustration of leaf" />
-        </div>
-        <!-- heading -->
-        <h2>Recent Works</h2>
-        <!-- img -->
-        <div class="works__img">
-          <div class="works__img--single">
-            <img src="./img/work-1.png" alt="bag" />
-          </div>
-          <div class="works__img--single">
-            <img src="./img/work-2.png" alt="plate" />
-          </div>
-          <div class="works__img--single">
-            <img src="./img/work-3.png" alt="women" />
-          </div>
-          <div class="works__img--single">
-            <img src="./img/work-4.png" alt="piggy bank" />
-          </div>
-        </div>
-        <!-- btn -->
-        <div class="works__btn">
-          <a href="#"><button>View Works</button></a>
-        </div>
-      </div>
-    </section>
-    <!-- footer -->
-    <footer id="footer">
-      <div class="container">
-        <!-- dec -->
-        <div class="footer__dec">
-          <img src="./img/things-dec-l.png" alt="illustration of leaf" />
-        </div>
-        <!-- img -->
-        <div class="footer__img">
-          <img src="./img/footer-img.png" alt="illustration of women" />
-        </div>
-        <!-- heading -->
-        <div class="footer__heading">
-          <h1>Ready to make something amazing?</h1>
-          <!-- contact -->
-          <div class="footer__contact">
-            <a href="tel:0776872151">
-              <i class="fas fa-phone-alt"></i>
-              <p>0776872151</p>
-            </a>
-            <a href="mailto:nttindev2304@gmail.com">
-              <i class="fas fa-envelope"></i>
-              <p>nttindev2304@gmail.com</p>
-            </a>
-          </div>
-          <div class="banner__socials">
-            <a href="https://www.facebook.com/n.trungtin2304/"
-              ><i class="fa-brands fa-square-facebook"></i
-            ></a>
-            <a href="https://www.instagram.com/n.trungtin2304/"
-              ><i class="fa-brands fa-instagram"></i
-            ></a>
-            <a href="https://github.com/84In"
-              ><i class="fa-brands fa-square-github"></i
-            ></a>
-            <a
-              href="https://www.linkedin.com/in/t%C3%ADn-nguy%E1%BB%85n-trung-90438032b/"
-              ><i class="fab fa-linkedin-in"></i
-            ></a>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- font awesome -->
-    <script
-      src="https://kit.fontawesome.com/b0487c6ead.js"
-      crossorigin="anonymous"
-    ></script>
-    <!-- main js -->
-    <script src="./js/main.js"></script>
-  </body>
-</html>
->>>>>>> ecf6fc325dd4fba549538bfb05a94b1b6b69165c
